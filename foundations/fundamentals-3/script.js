@@ -15,12 +15,17 @@ function multiply(a, b) {
 
 /*
     Takes a string and returns it with only the first
-    letter capitalized. Also trims the string.
+    letter capitalized.
 */
 function capitalize(str) {
-    let trim = str.trim();
-    let lowercase = trim.toLowerCase();
-    return lowercase.charAt(0).toUpperCase() + lowercase.substring(1);
+    const letterRegex = /[a-z]/i;
+    
+    let firstLetterIndex = str.search(letterRegex);
+    let firstLetterUpperCased = 
+        str.charAt(firstLetterIndex).toUpperCase();
+
+    return str.toLowerCase()
+        .replace(letterRegex, firstLetterUpperCased);
 }
 
 /*
