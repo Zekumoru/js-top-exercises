@@ -22,3 +22,10 @@ function capitalize(str) {
     let lowercase = trim.toLowerCase();
     return lowercase.charAt(0).toUpperCase() + lowercase.substring(1);
 }
+
+/*
+    Takes a string and returns the last character
+*/
+function lastLetter(str) {
+    return str.substr(-1, 1);
+}
