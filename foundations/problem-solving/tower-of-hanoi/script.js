@@ -24,6 +24,7 @@ function hanoiRecursive(stack, source, dest, extra) {
     // n-1 case
     hanoiRecursive(stack - 1, source, extra, dest);
     hanoiMove(stack, source, dest); // this line is also the nth case
+    hanoiRecursive(stack - 1, extra, dest, source);
 }
 
 /*
