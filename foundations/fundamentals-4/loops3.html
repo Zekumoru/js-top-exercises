@@ -42,6 +42,17 @@
 
     // Add your code here
     
+    const delimiter = ', ';
+    
+    while (i >= 2) {
+        if (isPrime(i)) {
+            para.textContent += i + delimiter;
+        }
+
+        i--;
+    }
+
+    para.textContent = para.textContent.substring(0, para.textContent.length - delimiter.length);
 
     // Don't edit the code below here!
     const section = document.querySelector('section');
