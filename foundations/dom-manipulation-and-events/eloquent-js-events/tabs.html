@@ -17,8 +17,34 @@
         </tab-panel>
         <script>
             function asTabs(node) {
-                // Your code here.
+                // insert list of buttons with text from data-tabname
+                createButtonList(node);
+
+                // hide children but one as active
+
+                // add listeners to buttons to toggle which tab activates
+
             }
+
+            function createButtonList(node) {
+                const list = document.createElement('ul');
+
+                for (const child of node.children) {
+                    if (child.tagName === 'DIV') {
+                        const button = document.createElement('button');
+                        button.textContent = child.textContent;
+                        button.addEventListener('click', buttonClick);
+                        list.appendChild(button);
+                    }
+                }
+
+                node.insertBefore(list, node.firstChild);
+            }
+
+            function buttonClick(event) {
+                console.log(this);
+            }
+
             asTabs(document.querySelector("tab-panel"));
         </script>
     </body>
