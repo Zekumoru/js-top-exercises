@@ -10,10 +10,24 @@
     </head>
 
     <body>
-        <p>🎈</p>
+        <p style="font-size: 10px;">🎈</p>
 
         <script>
-            // Your code here
+            const p = document.querySelector('p');
+            
+            window.addEventListener('keydown', (e) => {
+                let size = +p.style.fontSize.substring(0, p.style.fontSize.length - 2);
+
+                if (e.key === 'ArrowUp') {
+                    size *= 1.1;
+                }
+                else if (e.key === 'ArrowDown') {
+                    size /= 1.1;
+                }
+
+                p.style.fontSize = size.toFixed(2) + 'px';
+            });
+            
         </script>
     </body>
 
