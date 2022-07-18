@@ -17,14 +17,18 @@
         </tab-panel>
         <script>
             function asTabs(node) {
-                // insert list of buttons with text from data-tabname
-                createButtonList(node);
+                if (!node.querySelector('div[data-tabname]')) {
+                    return;
+                }
 
-                // hide children but one as active
+                const buttons = createButtonList(node);
                 activateTab(node, node.querySelector('div[data-tabname]').dataset.tabname);
-
-                // add listeners to buttons to toggle which tab activates
-
+                
+                buttons.forEach((button) => {
+                    button.addEventListener('click', (e) => {
+                        activateTab(node, button.textContent);
+                    });
+                });
             }
 
             function createButtonList(node) {
@@ -36,14 +40,18 @@
                     list.appendChild(button);
                 });
 
-                return node.insertBefore(list, node.firstChild);
+                return [...node.insertBefore(list, node.firstChild).children];
             }
 
             function activateTab(node, tabname) {
                 node.querySelectorAll('div[data-tabname]').forEach((tab) => {
-                    if (tab.dataset.tabname === tabname) return;
+                    let value = 'none';
 
-                    tab.style.display = 'none';
+                    if (tab.dataset.tabname === tabname) {
+                        value = 'block';
+                    }
+
+                    tab.style.display = value;
                 });
             }
 
