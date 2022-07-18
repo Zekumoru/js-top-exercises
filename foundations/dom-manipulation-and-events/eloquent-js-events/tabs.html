@@ -30,13 +30,11 @@
             function createButtonList(node) {
                 const list = document.createElement('ul');
 
-                for (const child of node.children) {
-                    if (child.tagName === 'DIV') {
-                        const button = document.createElement('button');
-                        button.textContent = child.textContent;
-                        list.appendChild(button);
-                    }
-                }
+                node.querySelectorAll('div[data-tabname]').forEach((tab) => {
+                    const button = document.createElement('button');
+                    button.textContent = tab.dataset.tabname;
+                    list.appendChild(button);
+                });
 
                 return node.insertBefore(list, node.firstChild);
             }
