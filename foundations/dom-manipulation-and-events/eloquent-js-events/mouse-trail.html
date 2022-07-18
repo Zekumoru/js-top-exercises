@@ -25,7 +25,6 @@
 
     <body>
         <script>
-            // create fixed trail elements
             const NUMBER_OF_TRAILS = 16;
             const trails = [];
 
@@ -40,9 +39,14 @@
                 }
             };
 
-            // add event listener for mouse move
-
-            // cycle through the trail elements
+            window.addEventListener('mousemove', (e) => {
+                for (let i = trails.length - 1; i > 0; i--) {
+                    trails[i].style.left = trails[i - 1].style.left;
+                    trails[i].style.top = trails[i - 1].style.top;
+                }
+                trails[0].style.left = (e.clientX - 3) + 'px';
+                trails[0].style.top = (e.clientY - 3) + 'px';
+            });
 
             createTrails(NUMBER_OF_TRAILS);
         </script>
