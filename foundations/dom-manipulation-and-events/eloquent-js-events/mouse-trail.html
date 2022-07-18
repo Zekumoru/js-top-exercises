@@ -25,7 +25,26 @@
 
     <body>
         <script>
-                // Your code here.
+            // create fixed trail elements
+            const NUMBER_OF_TRAILS = 16;
+            const trails = [];
+
+            const createTrails = (length) => {
+                for (let i = 0; i < length; i++) {
+                    const trail = document.createElement('div');
+                    trail.classList.add('trail');
+                    trail.style.top = '-6px';
+                    trail.style.left = '-6px';
+                    document.body.appendChild(trail);  
+                    trails.push(trail);
+                }
+            };
+
+            // add event listener for mouse move
+
+            // cycle through the trail elements
+
+            createTrails(NUMBER_OF_TRAILS);
         </script>
     </body>
 
