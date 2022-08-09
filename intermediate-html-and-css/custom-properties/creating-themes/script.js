@@ -7,3 +7,5 @@ function setTheme() {
 }
 
 document.querySelector('.theme-toggle').addEventListener('click', setTheme)
+
+setTheme();
